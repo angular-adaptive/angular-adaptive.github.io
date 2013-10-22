@@ -101,7 +101,7 @@
         </a>
         <h3>
           {{adaptive.title}}
-          <iframe ng-src="http://ghbtns.com/github-btn.html?user=angular-adaptive&repo={{adaptive.title}}&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+          <iframe ng-src="{{getSrc(adaptive.title)}}" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
         </h3>
       </div>
     </div>
@@ -114,7 +114,7 @@
         </a>
         <h3>
           {{adaptive.title}}
-          <iframe ng-src="http://ghbtns.com/github-btn.html?user=angular-adaptive&repo={{adaptive.title}}&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+          <iframe ng-src="{{getSrc(adaptive.title)}}" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
         </h3>
       </div>
     </div>
@@ -127,7 +127,7 @@
         </a>
         <h3>
           {{adaptive.title}}
-          <iframe ng-src="http://ghbtns.com/github-btn.html?user=angular-adaptive&repo={{adaptive.title}}&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+          <iframe ng-src="{{getSrc(adaptive.title)}}" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
         </h3>
       </div>
     </div>
@@ -158,7 +158,13 @@
 
 <script>
 angular.module('adaptiveApp', ['wu.masonry']).
+config(function($sceDelegateProvider){
+  $sceDelegateProvider.resourceUrlWhitelist(['**']);
+}).
 controller('AdaptiveCtrl', function ($scope) {
+  $scope.getSrc = function(title){
+    return 'http://ghbtns.com/github-btn.html?user=angular-adaptive&repo=' + title + '&type=watch&count=true';
+  };
 
   $scope.controls = [
     {
