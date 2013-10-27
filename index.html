@@ -78,6 +78,17 @@
       }
     }
     
+    .adaptive {
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .adaptive-image img {
+      width: auto;
+      height: 200px;
+      display: block;
+      margin: 0 auto;
+    }
 
   </style>
 </head>
@@ -95,40 +106,43 @@
   <div class="body">
     <h2 class="subtitle">Alternative Control Methods</h2>
     <div masonry class="repos">
-      <div  ng-repeat="adaptive in controls" class="masonry-brick">
-        <a ng-href="https://github.com/angular-adaptive/{{adaptive.title}}">
+      <div ng-repeat="adaptive in controls" class="masonry-brick adaptive">
+        <a class="adaptive-image" ng-href="https://github.com/angular-adaptive/{{adaptive.title}}">
           <img ng-src="{{ adaptive.src }}" alt="{{adaptive.title}}">
         </a>
-        <h3>
+        <h3 class="adaptive-title">
           {{adaptive.title}}
           <iframe ng-src="{{getSrc(adaptive.title)}}" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
         </h3>
+        <p class="adaptive-descripton">{{adaptive.description}}</p>
       </div>
     </div>
 
     <h2 class="subtitle">Conditional Components</h2>
     <div masonry class="repos">
-      <div  ng-repeat="adaptive in conditionals" class="masonry-brick">
-        <a ng-href="https://github.com/angular-adaptive/{{adaptive.title}}">
+      <div ng-repeat="adaptive in conditionals" class="masonry-brick adaptive">
+        <a class="adaptive-image" ng-href="https://github.com/angular-adaptive/{{adaptive.title}}">
           <img ng-src="{{ adaptive.src }}" alt="{{adaptive.title}}">
         </a>
-        <h3>
+        <h3 class="adaptive-title">
           {{adaptive.title}}
           <iframe ng-src="{{getSrc(adaptive.title)}}" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
         </h3>
+        <p class="adaptive-descripton">{{adaptive.description}}</p>
       </div>
     </div>
 
     <h2 class="subtitle">Utilities</h2>
     <div masonry class="repos">
-      <div  ng-repeat="adaptive in utilities" class="masonry-brick">
-        <a ng-href="https://github.com/angular-adaptive/{{adaptive.title}}">
+      <div ng-repeat="adaptive in utilities" class="masonry-brick adaptive">
+        <a class="adaptive-image" ng-href="https://github.com/angular-adaptive/{{adaptive.title}}">
           <img ng-src="{{ adaptive.src }}" alt="{{adaptive.title}}">
         </a>
-        <h3>
+        <h3 class="adaptive-title">
           {{adaptive.title}}
           <iframe ng-src="{{getSrc(adaptive.title)}}" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
         </h3>
+        <p class="adaptive-descripton">{{adaptive.description}}</p>
       </div>
     </div>
   </div>
@@ -169,35 +183,42 @@ controller('AdaptiveCtrl', function ($scope) {
   $scope.controls = [
     {
       title: 'adaptive-motion',
-      src: 'http://lorempixel.com/400/200/?' + ~~(Math.random() * 10000)
+      src: 'img/adaptive-motion.png',
+      description: 'Want to control an AngularJS app using your web cam? Check it.'
     },{
       title: 'adaptive-scroll',
       href: 'https://github.com/angular-adaptive/adaptive-scroll',
-      src: 'http://lorempixel.com/400/200/?' + ~~(Math.random() * 10000)
+      src: 'img/adaptive-scroll.png',
+      description: 'Want to scroll in an AngularJS app using gyroscope? Check it.'
     },{
       title: 'adaptive-speech',
       href: 'https://github.com/angular-adaptive/adaptive-speech',
-      src: 'http://lorempixel.com/400/200/?' + ~~(Math.random() * 10000)
+      src: 'img/adaptive-speech.png',
+      description: 'Want to control an AngularJS app using voice commands? Check it.'
     },
   ];
 
   $scope.conditionals = [
     {
       title: 'adaptive-googlemaps',
-      src: 'http://lorempixel.com/400/200/?' + ~~(Math.random() * 10000)
+      src: 'img/adaptive-googlemaps.png',
+      description: 'Save data, conditionally load google maps.'
     },{
       title: 'adaptive-vimeo',
-      src: 'http://lorempixel.com/400/200/?' + ~~(Math.random() * 10000)
+      src: 'img/adaptive-vimeo.png',
+      description: ''
     },{
       title: 'adaptive-youtube',
-      src: 'http://lorempixel.com/400/200/?' + ~~(Math.random() * 10000)
+      src: 'img/adaptive-youtube.png',
+      description: ''
     },
   ];
 
   $scope.utilities = [
     {
       title: 'adaptive-detection',
-      src: 'http://lorempixel.com/400/200/?' + ~~(Math.random() * 10000)
+      src: 'img/adaptive-detection.png',
+      description: 'This module allows you to detect iOS and Android devices using user agent string.'
     },
   ];
 });
