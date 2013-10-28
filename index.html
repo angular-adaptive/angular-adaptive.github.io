@@ -99,6 +99,37 @@
       box-shadow:         0px 0px 8px rgba(0,0,0,0.3);
     }
 
+    .not-released {
+      opacity: 0.5;
+    }
+
+    .ribbon-wrapper {
+      width: 85px;
+      height: 88px;
+      overflow: hidden;
+      position: absolute;
+      top: -3px;
+      right: -3px;
+    }
+
+    .ribbon {
+      font: bold 15px Sans-Serif;
+      color: #333;
+      text-align: center;
+      text-shadow: rgba(255,255,255,0.5) 0px 1px 0px;
+      -webkit-transform: rotate(45deg);
+      -moz-transform:    rotate(45deg);
+      -ms-transform:     rotate(45deg);
+      -o-transform:      rotate(45deg);
+      position: relative;
+      padding: 7px 0;
+      left: -5px;
+      top: 15px;
+      width: 120px;
+      background-color: rgb(229,42,58);
+      color: white;
+    }
+
   </style>
 </head>
 <body class="container" ng-app="adaptiveApp">
@@ -117,8 +148,9 @@
     <div masonry class="repos">
       <div ng-repeat="adaptive in controls" class="masonry-brick adaptive">
         <a class="adaptive-image" ng-href="https://github.com/angular-adaptive/{{adaptive.title}}">
-          <img ng-src="{{ adaptive.src }}" alt="{{adaptive.title}}">
+          <img ng-src="{{ adaptive.src }}" alt="{{adaptive.title}}" ng-class="{'not-released': adaptive.ribbon=='SOON'}">
         </a>
+        <div class="ribbon-wrapper" ng-show="adaptive.ribbon"><div class="ribbon">{{adaptive.ribbon}}</div></div>
         <h3 class="adaptive-title">
           {{adaptive.title}}
           <iframe ng-src="{{getSrc(adaptive.title)}}" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
@@ -131,8 +163,9 @@
     <div masonry class="repos">
       <div ng-repeat="adaptive in conditionals" class="masonry-brick adaptive">
         <a class="adaptive-image" ng-href="https://github.com/angular-adaptive/{{adaptive.title}}">
-          <img ng-src="{{ adaptive.src }}" alt="{{adaptive.title}}">
+          <img ng-src="{{ adaptive.src }}" alt="{{adaptive.title}}" ng-class="{'not-released': adaptive.ribbon=='SOON'}">
         </a>
+        <div class="ribbon-wrapper" ng-show="adaptive.ribbon"><div class="ribbon">{{adaptive.ribbon}}</div></div>
         <h3 class="adaptive-title">
           {{adaptive.title}}
           <iframe ng-src="{{getSrc(adaptive.title)}}" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
@@ -145,8 +178,9 @@
     <div masonry class="repos">
       <div ng-repeat="adaptive in utilities" class="masonry-brick adaptive">
         <a class="adaptive-image" ng-href="https://github.com/angular-adaptive/{{adaptive.title}}">
-          <img ng-src="{{ adaptive.src }}" alt="{{adaptive.title}}">
+          <img ng-src="{{ adaptive.src }}" alt="{{adaptive.title}}" ng-class="{'not-released': adaptive.ribbon=='SOON'}">
         </a>
+        <div class="ribbon-wrapper" ng-show="adaptive.ribbon"><div class="ribbon">{{adaptive.ribbon}}</div></div>
         <h3 class="adaptive-title">
           {{adaptive.title}}
           <iframe ng-src="{{getSrc(adaptive.title)}}" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
@@ -193,7 +227,8 @@ controller('AdaptiveCtrl', function ($scope) {
     {
       title: 'adaptive-motion',
       src: 'img/adaptive-motion.png',
-      description: 'Want to control an AngularJS app using your web cam? Check it.'
+      description: 'Want to control an AngularJS app using your web cam? Check it.',
+      ribbon: 'NEW'
     },{
       title: 'adaptive-scroll',
       href: 'https://github.com/angular-adaptive/adaptive-scroll',
@@ -215,11 +250,13 @@ controller('AdaptiveCtrl', function ($scope) {
     },{
       title: 'adaptive-vimeo',
       src: 'img/adaptive-vimeo.png',
-      description: ''
+      description: '',
+      ribbon: 'SOON'
     },{
       title: 'adaptive-youtube',
       src: 'img/adaptive-youtube.png',
-      description: ''
+      description: '',
+      ribbon: 'SOON'
     },
   ];
 
@@ -227,7 +264,8 @@ controller('AdaptiveCtrl', function ($scope) {
     {
       title: 'adaptive-detection',
       src: 'img/adaptive-detection.png',
-      description: 'This module allows you to detect iOS and Android devices using user agent string.'
+      description: 'This module allows you to detect iOS and Android devices using user agent string.',
+      ribbon: 'NEW'
     },
   ];
 });
